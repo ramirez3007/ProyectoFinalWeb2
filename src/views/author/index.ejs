@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authors List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f1ea;
+            color: #333;
+        }
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #8d6e63;
+            padding-top: 20px;
+        }
+        .sidebar a {
+            padding: 15px 25px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #f4f1ea;
+            display: block;
+        }
+        .sidebar a:hover {
+            background-color: #a1887f;
+        }
+        .main-content {
+            margin-left: 260px; /* Same as the width of the sidebar */
+            padding: 20px;
+        }
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff8e1;
+            color: #333;
+        }
+        .card-title {
+            font-weight: bold;
+        }
+        .table th, .table td {
+            vertical-align: middle;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+        .btn-warning {
+            background-color: #ffc107;
+            border-color: #ffc107;
+        }
+        .btn-warning:hover {
+            background-color: #e0a800;
+            border-color: #d39e00;
+        }
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+        .btn-danger:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
+        }
+        .btn-success {
+            background-color: #28a745;
+            border-color: #28a745;
+        }
+        .btn-success:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="sidebar">
+        <a href="/v1/books">Administrar libros</a>
+        <a href="/v1/authors">Administrar autores</a>
+    </div>
+    
+    <div class="main-content">
+        <div class="container py-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-center">
+                        <h2 class="my-4">Lista de autores</h2>
+                    </div>
+
+                    <div>
+                        <a href="/v1/authors/new" class="btn btn-sm btn-success">Crear</a>
+                    </div>
+                    <br>
+                    <table class="table table-striped">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Fecha de nacimiento</th>
+                                <th scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% authors.forEach(function(author) { %>
+                                <tr>
+                                    <td><%= author.name %></td>
+                                    <td><%= author.birthdate %></td>
+                                    <td>
+                                        <a href="/v1/authors/edit/<%= author.author_id %>" class="btn btn-sm btn-warning">Editar</a>
+                                        <form action="/v1/authors/<%= author.author_id %>/delete" method="POST" style="display:inline;">
+                                            <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                                        </form>                                                                        
+                                    </td>
+                                </tr>
+                            <% }); %>    
+                        </tbody>
+                    </table>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

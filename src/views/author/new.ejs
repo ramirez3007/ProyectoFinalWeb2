@@ -1,0 +1,56 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authors List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #383535;
+            color: #fff;
+        }
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            color: #000;
+        }
+        .card-title {
+            font-weight: bold;
+        }
+        .table th, .table td {
+            vertical-align: middle;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }   
+    </style>
+</head>
+<br>
+<br>
+<div class="card mb-4">
+    <div class="card-body">
+        <h5 class="card-title mb-4">Nuevo autor</h5>
+        
+        <form action="/v1/authors" method="POST">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="name" class="form-label visually-hidden">Nombre:</label>
+                    <input type="text" id="name" name="name" class="form-control" placeholder="Nombre" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="birthdate" class="form-label visually-hidden">Fecha de nacimiento:</label>
+                    <input type="date" id="birthdate" name="birthdate" class="form-control" placeholder="Fecha de nacimiento">
+                </div>
+                <div class="col-md-12 d-flex align-items-end mt-3">
+                    <button type="submit" class="btn btn-primary btn-sm">Agregar</button>
+                </div>
+            </div>
+        </form>
+        
+    </div>
+</div>
